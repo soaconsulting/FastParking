@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.soaconsultingonline.fastparking.activity.PersonalDataActivity"
+    tools:showIn="@layout/activity_personal_data">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Nombre:"
+        android:id="@+id/nombreTextView"
+        android:layout_alignBottom="@+id/nombreEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Email:"
+        android:id="@+id/emailTextView"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/generoTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Celular:"
+        android:id="@+id/celularTextView"
+        android:layout_below="@+id/emailTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Cumpleaños:"
+        android:id="@+id/cumpleTextView"
+        android:layout_below="@+id/celularTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="29dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Género:"
+        android:id="@+id/generoTextView"
+        android:layout_below="@+id/nombreTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="29dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/abc_action_bar_stacked_max_height"
+        android:id="@+id/nombreEditText"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/celularEditText"
+        android:layout_alignStart="@+id/celularEditText"
+        android:layout_alignRight="@+id/celularEditText"
+        android:layout_alignEnd="@+id/celularEditText"
+        android:inputType="textCapWords|textPersonName" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@+id/nombreEditText"
+        android:layout_alignStart="@+id/nombreEditText"
+        android:orientation="horizontal"
+        android:id="@+id/generoRadios"
+        android:layout_alignBottom="@+id/generoTextView"
+        android:layout_alignTop="@+id/generoTextView">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mujer"
+            android:id="@+id/mujerRadioButton"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hombre"
+            android:id="@+id/hombreRadioButton"
+            android:checked="false" />
+    </RadioGroup>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/abc_action_bar_stacked_max_height"
+        android:id="@+id/emailEditText"
+        android:layout_above="@+id/celularTextView"
+        android:layout_alignLeft="@+id/generoRadios"
+        android:layout_alignStart="@+id/generoRadios"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/abc_action_bar_stacked_max_height"
+        android:id="@+id/celularEditText"
+        android:layout_above="@+id/cumpleTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/cumpleTextView"
+        android:layout_toEndOf="@+id/cumpleTextView"
+        android:inputType="phone" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/abc_action_bar_stacked_max_height"
+        android:id="@+id/cumpleEditText"
+        android:layout_alignBottom="@+id/cumpleTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/celularEditText"
+        android:layout_alignStart="@+id/celularEditText"
+        android:inputType="date" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aceptar"
+        android:id="@+id/buttonGrabar"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/cumpleTextView"
+        android:layout_alignEnd="@+id/cumpleEditText"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimary" />
+
+</RelativeLayout>

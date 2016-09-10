@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Fast Parking</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="fast_parking_icon">Fast Parking Icon</string>
+    <string name="caricon">CarIcon</string>
+    <string name="title_activity_login">Fast Parking</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Ingresar o Registrarse</string>
+    <string name="action_sign_in_short">Ingresar</string>
+    <string name="error_invalid_email">La Dirección de Email no es Válida</string>
+    <string name="error_invalid_password">La Contraseña es Muy Corta</string>
+    <string name="error_incorrect_password">La Contraseña no es Correcta</string>
+    <string name="error_field_required">Campo Requerido</string>
+    <string name="permission_rationale">"Permisos Sobre la Agenda de Contactos son Necesarios para Proveer Atocompletado."
+    </string>
+    <string name="action_inicio_sesion">Iniciar Sesión</string>
+    <string name="title_activity_register">Mis Datos Personales</string>
+    <string name="title_activity_maps">Parqueaderos</string>
+    <string name="title_activity_personal_data">Mis Datos Personales</string>
+    <string name="title_tarjeta_list">Medios de Pago</string>
+    <string name="title_tarjeta_detail">Detalle de Tarjeta</string>
+    <string name="title_pago_list">Pagos</string>
+    <string name="title_pago_detail">Pago Detail</string>
+    <string name="title_activity_payment">Realizar Pago de Parqueo</string>
+
+    <string name="facebook_app_id">301290933540170</string>
+    <string name="facebook_login_button_text">Iniciar Sesión con Facebook</string>
+</resources>
