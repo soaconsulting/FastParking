@@ -1,13 +1,17 @@
 package com.soaconsultingonline.fastparking.services;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.soaconsultingonline.fastparking.database.vo.UsuarioVO;
+
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by Jimmy on 10/09/2016.
  */
-public class UsuarioService extends AsyncTask<Void, Void, UsuarioVO>{
+public class AltaUsuarioService extends AsyncTask<Void, Void, UsuarioVO>{
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -25,6 +29,23 @@ public class UsuarioService extends AsyncTask<Void, Void, UsuarioVO>{
      */
     @Override
     protected UsuarioVO doInBackground(Void... params) {
+        try {
+            final String url = "http://rest-service.guides.spring.io/greeting";
+            RestTemplate restTemplate = new RestTemplate();
+            restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+            UsuarioVO user = restTemplate.getForObject(url, UsuarioVO.class);
+            return user;
+        } catch (Exception e) {
+            Log.e("AltaUsuarioService", e.getMessage(), e);
+        }
         return null;
+    }
+
+    /**
+     *
+     * @param user
+     */
+    @Override
+    protected void onPostExecute(UsuarioVO user) {
     }
 }
