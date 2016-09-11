@@ -3,9 +3,7 @@ package com.soaconsultingonline.fastparking.services;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.soaconsultingonline.fastparking.database.vo.CheckingRequest;
-import com.soaconsultingonline.fastparking.database.vo.ServiciosParqueaderoVO;
-import com.soaconsultingonline.fastparking.database.vo.UsuarioVO;
+import com.soaconsultingonline.fastparking.database.vo.FPBusinessResponseVO;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -13,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Created by Jimmy on 10/09/2016.
  */
-public class CheckingPagoService extends AsyncTask<Void, Void, ServiciosParqueaderoVO>{
+public class DeclinaPagoUsuarioService extends AsyncTask<Void, Void, FPBusinessResponseVO>{
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -30,15 +28,15 @@ public class CheckingPagoService extends AsyncTask<Void, Void, ServiciosParquead
      * @see #publishProgress
      */
     @Override
-    protected ServiciosParqueaderoVO doInBackground(Void... params) {
+    protected FPBusinessResponseVO doInBackground(Void... params) {
         try {
             final String url = "http://rest-service.guides.spring.io/greeting";
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-            ServiciosParqueaderoVO res = restTemplate.getForObject(url, ServiciosParqueaderoVO.class);
+            FPBusinessResponseVO res = restTemplate.getForObject(url, FPBusinessResponseVO.class);
             return res;
         } catch (Exception e) {
-            Log.e("CheckingPagoService", e.getMessage(), e);
+            Log.e("DeclPagoUsuarioService", e.getMessage(), e);
         }
         return null;
     }
@@ -48,6 +46,6 @@ public class CheckingPagoService extends AsyncTask<Void, Void, ServiciosParquead
      * @param res
      */
     @Override
-    protected void onPostExecute(ServiciosParqueaderoVO res) {
+    protected void onPostExecute(FPBusinessResponseVO res) {
     }
 }
