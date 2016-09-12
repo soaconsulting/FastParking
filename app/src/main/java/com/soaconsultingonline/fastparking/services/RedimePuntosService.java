@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Created by Jimmy on 10/09/2016.
  */
-public class RedimePuntosService extends AsyncTask<Void, Void, FPBusinessResponseVO>{
+public class RedimePuntosService extends AsyncTask<String, Void, FPBusinessResponseVO>{
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -28,9 +28,9 @@ public class RedimePuntosService extends AsyncTask<Void, Void, FPBusinessRespons
      * @see #publishProgress
      */
     @Override
-    protected FPBusinessResponseVO doInBackground(Void... params) {
+    protected FPBusinessResponseVO doInBackground(String... params) {
         try {
-            final String url = "http://rest-service.guides.spring.io/greeting";
+            final String url = params[0];
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
             FPBusinessResponseVO res = restTemplate.getForObject(url, FPBusinessResponseVO.class);

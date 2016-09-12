@@ -3,7 +3,7 @@ package com.soaconsultingonline.fastparking.services;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.soaconsultingonline.fastparking.database.vo.FPResponse;
+import com.soaconsultingonline.fastparking.database.vo.FPBusinessResponseVO;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Created by Jimmy on 10/09/2016.
  */
-public class BajaUsuarioService extends AsyncTask<Void, Void, FPResponse>{
+public class BajaUsuarioService extends AsyncTask<String, Void, FPBusinessResponseVO>{
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -28,12 +28,12 @@ public class BajaUsuarioService extends AsyncTask<Void, Void, FPResponse>{
      * @see #publishProgress
      */
     @Override
-    protected FPResponse doInBackground(Void... params) {
+    protected FPBusinessResponseVO doInBackground(String... params) {
         try {
-            final String url = "http://rest-service.guides.spring.io/greeting";
+            final String url = params[0];
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-            FPResponse res = restTemplate.getForObject(url, FPResponse.class);
+            FPBusinessResponseVO res = restTemplate.getForObject(url, FPBusinessResponseVO.class);
             return res;
         } catch (Exception e) {
             Log.e("BajaUsuarioService", e.getMessage(), e);
@@ -46,6 +46,6 @@ public class BajaUsuarioService extends AsyncTask<Void, Void, FPResponse>{
      * @param res
      */
     @Override
-    protected void onPostExecute(FPResponse res) {
+    protected void onPostExecute(FPBusinessResponseVO res) {
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Jimmy on 10/09/2016.
  */
-public class ConsultaParqueaderosService extends AsyncTask<Void, Void, List<ParqueaderoVO>>{
+public class ConsultaParqueaderosService extends AsyncTask<String, Void, List<ParqueaderoVO>>{
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -31,9 +31,9 @@ public class ConsultaParqueaderosService extends AsyncTask<Void, Void, List<Parq
      * @see #publishProgress
      */
     @Override
-    protected List<ParqueaderoVO> doInBackground(Void... params) {
+    protected List<ParqueaderoVO> doInBackground(String... params) {
         try {
-            final String url = "http://rest-service.guides.spring.io/greeting";
+            final String url = params[0];
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
             ParqueaderoVO[] res = restTemplate.getForObject(url, ParqueaderoVO[].class);

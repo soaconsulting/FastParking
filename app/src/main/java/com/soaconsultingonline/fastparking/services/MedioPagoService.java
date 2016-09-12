@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Jimmy on 10/09/2016.
  */
-public class MedioPagoService extends AsyncTask<Void, Void, List<MediosPagoVO>>{
+public class MedioPagoService extends AsyncTask<String, Void, List<MediosPagoVO>>{
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -32,9 +32,9 @@ public class MedioPagoService extends AsyncTask<Void, Void, List<MediosPagoVO>>{
      * @see #publishProgress
      */
     @Override
-    protected List<MediosPagoVO> doInBackground(Void... params) {
+    protected List<MediosPagoVO> doInBackground(String... params) {
         try {
-            final String url = "http://rest-service.guides.spring.io/greeting";
+            final String url = params[0];
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
             MediosPagoVO[] res = restTemplate.getForObject(url, MediosPagoVO[].class);

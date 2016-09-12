@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Created by Jimmy on 10/09/2016.
  */
-public class AltaUsuarioService extends AsyncTask<Void, Void, UsuarioVO>{
+public class AltaUsuarioService extends AsyncTask<String, Void, UsuarioVO>{
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -28,9 +28,9 @@ public class AltaUsuarioService extends AsyncTask<Void, Void, UsuarioVO>{
      * @see #publishProgress
      */
     @Override
-    protected UsuarioVO doInBackground(Void... params) {
+    protected UsuarioVO doInBackground(String... params) {
         try {
-            final String url = "http://rest-service.guides.spring.io/greeting";
+            final String url = params[0];
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
             UsuarioVO user = restTemplate.getForObject(url, UsuarioVO.class);

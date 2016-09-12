@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Created by Jimmy on 10/09/2016.
  */
-public class ResgistroPqrService extends AsyncTask<Void, Void, PqrVO>{
+public class ResgistroPqrService extends AsyncTask<String, Void, PqrVO>{
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -28,9 +28,9 @@ public class ResgistroPqrService extends AsyncTask<Void, Void, PqrVO>{
      * @see #publishProgress
      */
     @Override
-    protected PqrVO doInBackground(Void... params) {
+    protected PqrVO doInBackground(String... params) {
         try {
-            final String url = "http://rest-service.guides.spring.io/greeting";
+            final String url = params[0];
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
             PqrVO res = restTemplate.getForObject(url, PqrVO.class);
