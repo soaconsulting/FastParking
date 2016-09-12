@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.soaconsultingonline.fastparking.R;
 import com.soaconsultingonline.fastparking.database.vo.ParqueaderoVO;
+import com.soaconsultingonline.fastparking.services.ConsultaParqueaderosService;
 
 import java.util.List;
 
@@ -37,12 +38,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
-    List<ParqueaderoVO> parqueaderos;
+    List<ParqueaderoVO> parqueaderos = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        ConsultaParqueaderosService service = new ConsultaParqueaderosService() {
+            @Override
+            public void onResponseReceived(Object result) {
+                parqueaderos = (List<ParqueaderoVO>) result;
+            }
+        };
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
@@ -80,6 +88,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         else {
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
+        }
+
+        // Se adicionan los marcadores al mapa
+        if (parqueaderos != null && !parqueaderos.isEmpty()) {
+            for(ParqueaderoVO p : parqueaderos) {
+                if (p.getActivo() != null && p.getActivo().equalsIgnoreCase("S"))
+                    googleMap.addMarker(new MarkerOptions().position(new LatLng(p.getLatitud().doubleValue(), p.getLongitud().doubleValue())).title(p.getNombre() + " " + p.getDireccion()));
+            }
         }
     }
 

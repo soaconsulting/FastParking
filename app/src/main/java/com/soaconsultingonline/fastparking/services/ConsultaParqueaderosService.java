@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Jimmy on 10/09/2016.
  */
-public class ConsultaParqueaderosService extends AsyncTask<String, Void, List<ParqueaderoVO>>{
+public abstract class ConsultaParqueaderosService extends AsyncTask<String, Void, List<ParqueaderoVO>> implements ClientIF {
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -50,5 +50,8 @@ public class ConsultaParqueaderosService extends AsyncTask<String, Void, List<Pa
      */
     @Override
     protected void onPostExecute(List<ParqueaderoVO> res) {
+        onResponseReceived(res);
     }
+
+    public abstract void onResponseReceived(Object result);
 }
