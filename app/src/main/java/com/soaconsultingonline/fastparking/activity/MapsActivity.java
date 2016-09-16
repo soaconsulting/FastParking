@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.soaconsultingonline.fastparking.R;
 import com.soaconsultingonline.fastparking.database.vo.ParqueaderoVO;
 import com.soaconsultingonline.fastparking.services.ConsultaParqueaderosService;
+import com.soaconsultingonline.fastparking.services.FPProperties;
 
 import java.util.List;
 
@@ -49,6 +51,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onResponseReceived(Object result) {
                 parqueaderos = (List<ParqueaderoVO>) result;
+                // Se adicionan los marcadores al mapa
+                if (parqueaderos != null && !parqueaderos.isEmpty()) {
+                    for(ParqueaderoVO p : parqueaderos) {
+                        if (p.getActivo() != null && p.getActivo().equalsIgnoreCase("S"))
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(p.getLatitud().doubleValue(), p.getLongitud().doubleValue())).title(p.getNombre() + ": " + p.getDireccion()));
+                    }
+                }
             }
         };
 
@@ -59,6 +68,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        try {
+            service.execute(FPProperties.getInstance(this.getApplicationContext()).getProperty("ConsultaParqueaderosService"));
+        } catch (Throwable t) {
+            Log.e("MapsActivity", t.getMessage(), t);
+        }
     }
 
 
@@ -88,14 +103,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         else {
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
-        }
-
-        // Se adicionan los marcadores al mapa
-        if (parqueaderos != null && !parqueaderos.isEmpty()) {
-            for(ParqueaderoVO p : parqueaderos) {
-                if (p.getActivo() != null && p.getActivo().equalsIgnoreCase("S"))
-                    googleMap.addMarker(new MarkerOptions().position(new LatLng(p.getLatitud().doubleValue(), p.getLongitud().doubleValue())).title(p.getNombre() + " " + p.getDireccion()));
-            }
         }
     }
 

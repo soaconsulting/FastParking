@@ -24,9 +24,9 @@ public class FPProperties {
      * @return
      */
     public static FPProperties getInstance(Context c) {
+        context = c;
         if (ourInstance == null)
             ourInstance = new FPProperties();
-        context = c;
         return ourInstance;
     }
 
