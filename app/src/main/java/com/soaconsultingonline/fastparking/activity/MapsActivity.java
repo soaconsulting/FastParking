@@ -47,7 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        ConsultaParqueaderosService service = new ConsultaParqueaderosService() {
+        ConsultaParqueaderosService service = new ConsultaParqueaderosService(MapsActivity.this) {
             @Override
             public void onResponseReceived(Object result) {
                 parqueaderos = (List<ParqueaderoVO>) result;

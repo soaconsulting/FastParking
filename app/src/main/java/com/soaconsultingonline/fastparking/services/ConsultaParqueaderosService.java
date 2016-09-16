@@ -1,8 +1,10 @@
 package com.soaconsultingonline.fastparking.services;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.soaconsultingonline.fastparking.activity.MapsActivity;
 import com.soaconsultingonline.fastparking.database.vo.ParqueaderoVO;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -15,6 +17,23 @@ import java.util.List;
  * Created by Jimmy on 10/09/2016.
  */
 public abstract class ConsultaParqueaderosService extends AsyncTask<String, Void, List<ParqueaderoVO>> implements ClientIF {
+
+    private ProgressDialog dialog;
+
+    /**
+     * Constructor
+     *
+     * @param activity
+     */
+    public ConsultaParqueaderosService(MapsActivity activity) {
+        dialog = new ProgressDialog(activity);
+    }
+
+    @Override
+    protected void onPreExecute() {
+        dialog.setMessage("Cargando Marcadores ...");
+        dialog.show();
+    }
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -50,6 +69,9 @@ public abstract class ConsultaParqueaderosService extends AsyncTask<String, Void
      */
     @Override
     protected void onPostExecute(List<ParqueaderoVO> res) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
         onResponseReceived(res);
     }
 
