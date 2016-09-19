@@ -1,6 +1,8 @@
 package com.soaconsultingonline.fastparking.activity;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -41,11 +43,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
     List<ParqueaderoVO> parqueaderos = null;
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        alertDialog = new AlertDialog.Builder(MapsActivity.this).create();
+        alertDialog.setTitle("Mensaje");
+        alertDialog.setMessage("No se pudo cargar los Marcadores.");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
 
         ConsultaParqueaderosService service = new ConsultaParqueaderosService(MapsActivity.this) {
             @Override
@@ -57,6 +70,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         if (p.getActivo() != null && p.getActivo().equalsIgnoreCase("S"))
                             mMap.addMarker(new MarkerOptions().position(new LatLng(p.getLatitud().doubleValue(), p.getLongitud().doubleValue())).title(p.getNombre() + ": " + p.getDireccion()));
                     }
+                } else {
+                    alertDialog.show();
                 }
             }
         };
