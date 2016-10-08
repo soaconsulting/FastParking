@@ -10,40 +10,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activity.FastParkingActivity"
-    tools:showIn="@layout/app_bar_fast_parking">
+    tools:showIn="@layout/app_bar_fast_parking"
+    android:background="@drawable/background_hdpi">
 
-    <ImageButton
+    <TextView
+        android:text="Pagar Tiquete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pagarBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:id="@+id/textView"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/cast_libraries_material_featurehighlight_text_horizontal_margin"
+        android:textAlignment="center"
+        android:textStyle="normal|bold" />
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pagarBtn"
-        android:background="@drawable/tc_xhdpi"
+        android:background="@drawable/fp_scan_button"
         android:focusable="true"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Paga tu Tiquete"
-        android:id="@+id/textView"
-        android:clickable="false"
-        android:gravity="center_horizontal"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/abc_action_button_min_width_overflow_material"
-        android:textStyle="bold"
-        android:layout_marginTop="36dp"
-        android:layout_below="@+id/pagarBtn"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <ImageView
-        android:layout_width="159dp"
-        android:layout_height="189dp"
-        android:id="@+id/imageView2"
-        android:background="@drawable/fp_logo_xxhdpi"
+        android:layout_marginTop="30dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal" />
 </RelativeLayout>

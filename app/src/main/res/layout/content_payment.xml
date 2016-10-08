@@ -12,11 +12,11 @@
     tools:context="com.soaconsultingonline.fastparking.activity.PaymentActivity"
     tools:showIn="@layout/activity_payment">
 
-    <ImageButton
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scanButton"
-        android:background="@drawable/camera_xhdpi"
+        android:background="@drawable/fp_scan_button"
         android:layout_below="@+id/scanTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp" />

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -15,7 +15,7 @@ import com.soaconsultingonline.fastparking.R;
 
 public class PaymentActivity extends AppCompatActivity {
 
-    private ImageButton mButton;
+    private Button mButton;
     private TextView barCode;
 
     @Override
@@ -29,7 +29,7 @@ public class PaymentActivity extends AppCompatActivity {
 
         // Scanner
         barCode = (TextView) findViewById(R.id.barCodeTextView);
-        mButton = (ImageButton) findViewById(R.id.scanButton);
+        mButton = (Button) findViewById(R.id.scanButton);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
