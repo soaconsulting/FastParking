@@ -101,14 +101,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                facebookLoginButton.setVisibility(View.INVISIBLE);
-                Intent intent = new Intent(LoginActivity.this, FastParkingActivity.class);
-                setFacebookData(loginResult);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                // Add new Flag to start new Activity
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish();
+                try {
+                    facebookLoginButton.setVisibility(View.INVISIBLE);
+                    Intent intent = new Intent(LoginActivity.this, FastParkingActivity.class);
+                    setFacebookData(loginResult);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    // Add new Flag to start new Activity
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override

@@ -10,7 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.soaconsultingonline.fastparking.activity.PersonalDataActivity"
-    tools:showIn="@layout/activity_personal_data">
+    tools:showIn="@layout/activity_personal_data"
+    android:background="@drawable/background_hdpi">
 
     <TextView
         android:layout_width="wrap_content"
