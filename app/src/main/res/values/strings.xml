@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">Fast Parking</string>
+    <string name="app_name">PayParking</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Abrir Menú</string>
+    <string name="navigation_drawer_close">Cerrar Menú</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="fast_parking_icon">Fast Parking Icon</string>
+    <string name="action_settings">Opciones</string>
+    <string name="fast_parking_icon">PayParking Icon</string>
     <string name="caricon">CarIcon</string>
-    <string name="title_activity_login">Fast Parking</string>
+    <string name="title_activity_login">PayParking</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -21,15 +21,19 @@
     <string name="permission_rationale">"Permisos Sobre la Agenda de Contactos son Necesarios para Proveer Atocompletado."
     </string>
     <string name="action_inicio_sesion">Iniciar Sesión</string>
-    <string name="title_activity_register">Mis Datos Personales</string>
+    <string name="title_activity_register">Registrarse</string>
     <string name="title_activity_maps">Parqueaderos</string>
     <string name="title_activity_personal_data">Mis Datos Personales</string>
     <string name="title_tarjeta_list">Medios de Pago</string>
     <string name="title_tarjeta_detail">Detalle de Tarjeta</string>
-    <string name="title_pago_list">Pagos</string>
-    <string name="title_pago_detail">Pago Detail</string>
-    <string name="title_activity_payment">Realizar Pago de Parqueo</string>
+    <string name="title_pago_list">Mis Pagos</string>
+    <string name="title_pago_detail">Detalle de Pago</string>
+    <string name="title_contactenos">Contactenos</string>
+    <string name="title_compartir">Compartir</string>
+    <string name="title_comunicarse">Comunícate</string>
+    <string name="title_salir">Salir</string>
+    <string name="title_activity_payment">Realizar Pago</string>
 
     <string name="facebook_app_id">301290933540170</string>
-    <string name="facebook_login_button_text">Iniciar Sesión con Facebook</string>
+    <string name="facebook_login_button_text">Continuar con Facebook</string>
 </resources>

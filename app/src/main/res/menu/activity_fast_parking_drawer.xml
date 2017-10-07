@@ -5,39 +5,39 @@
         <item
             android:id="@+id/nav_person"
             android:icon="@drawable/ic_person_black_24dp"
-            android:title="Mis Datos Personales" />
+            android:title="@string/title_activity_personal_data" />
         <item
             android:id="@+id/nav_pay"
             android:icon="@drawable/ic_account_balance_wallet_black_24dp"
-            android:title="Mis Medios de Pago" />
+            android:title="@string/title_tarjeta_list" />
         <item
             android:id="@+id/nav_payment"
             android:icon="@drawable/ic_directions_car_black_24dp"
-            android:title="Pagar" />
+            android:title="@string/title_activity_payment" />
         <item
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_insert_chart_black_24dp"
-            android:title="Mis Pagos" />
+            android:title="@string/title_pago_list" />
         <item
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_map_black_24dp"
-            android:title="Parqueaderos" />
+            android:title="@string/title_activity_maps" />
         <item
             android:id="@+id/nav_exit"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
-            android:title="Salir" />
+            android:title="@string/title_salir" />
     </group>
 
-    <item android:title="Comunícate">
+    <item android:title="@string/title_comunicarse">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Compartir" />
+                android:title="@string/title_compartir" />
             <item
                 android:id="@+id/nav_ask"
                 android:icon="@drawable/ic_email_black_24dp"
-                android:title="Contactanos" />
+                android:title="@string/title_contactenos" />
         </menu>
     </item>
 

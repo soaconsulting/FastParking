@@ -43,10 +43,10 @@
         android:layout_alignParentEnd="true">
 
         <ImageView
-            android:layout_width="159dp"
-            android:layout_height="189dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:id="@+id/imageView"
-            android:background="@drawable/fp_logo_xxhdpi"
+            android:background="@drawable/payparking_logo_titulo"
             android:layout_gravity="center_horizontal|top" />
 
         <AutoCompleteTextView
@@ -56,7 +56,6 @@
                 android:hint="@string/prompt_email"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:singleLine="true"
             android:layout_marginBottom="10dp" />
 
         <EditText
@@ -69,7 +68,6 @@
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:singleLine="true"
             android:layout_marginBottom="10dp" />
 
         <Button
@@ -85,10 +83,12 @@
         <com.facebook.login.widget.LoginButton
             android:id="@+id/facebook_login_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:paddingTop="12sp"
             android:paddingBottom="12sp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:text="@string/facebook_login_button_text"
+            android:layout_weight="0.31" />
 
         <TextView
             android:layout_width="match_parent"

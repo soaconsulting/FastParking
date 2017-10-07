@@ -28,7 +28,7 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
-        android:textSize="@dimen/com_facebook_share_button_compound_drawable_padding"
+        android:textSize="@dimen/com_facebook_profilepictureview_preset_size_normal"
         android:paddingTop="5dp" />
 
 </LinearLayout>
