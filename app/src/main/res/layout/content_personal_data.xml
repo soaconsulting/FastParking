@@ -140,7 +140,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aceptar"
-        android:id="@+id/buttonGrabar"
         android:layout_marginTop="29dp"
         android:layout_below="@+id/cumpleTextView"
         android:layout_alignEnd="@+id/cumpleEditText"

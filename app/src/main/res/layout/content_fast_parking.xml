@@ -13,27 +13,41 @@
     tools:showIn="@layout/app_bar_fast_parking"
     android:background="@drawable/background_hdpi">
 
-    <TextView
-        android:text="Pagar Tiquete"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pagarBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
-        android:id="@+id/textView"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/cast_libraries_material_featurehighlight_text_horizontal_margin"
-        android:textAlignment="center"
-        android:textStyle="normal|bold" />
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/payparking_logo_titulo"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginBottom="50dp"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:id="@+id/checkinBtn"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/title_activity_checkin"
+        android:textStyle="bold"
+        android:background="@color/colorPrimary"
+        android:layout_marginBottom="50dp" />
+
+    <Button
         android:id="@+id/pagarBtn"
-        android:background="@drawable/fp_scan_button"
-        android:focusable="true"
-        android:layout_marginTop="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal" />
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_payment"
+        android:textStyle="bold"
+        android:background="@color/colorPrimary"
+        android:layout_marginBottom="10dp" />
+
+    </LinearLayout>
+
 </RelativeLayout>

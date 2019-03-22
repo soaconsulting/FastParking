@@ -4,15 +4,11 @@
     <string name="navigation_drawer_open">Abrir Menú</string>
     <string name="navigation_drawer_close">Cerrar Menú</string>
 
-    <string name="action_settings">Opciones</string>
-    <string name="fast_parking_icon">PayParking Icon</string>
-    <string name="caricon">CarIcon</string>
     <string name="title_activity_login">PayParking</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Contraseña</string>
-    <string name="action_sign_in">Ingresar o Registrarse</string>
     <string name="action_sign_in_short">Ingresar</string>
     <string name="error_invalid_email">La Dirección de Email no es Válida</string>
     <string name="error_invalid_password">La Contraseña es Muy Corta</string>
@@ -20,19 +16,29 @@
     <string name="error_field_required">Campo Requerido</string>
     <string name="permission_rationale">"Permisos Sobre la Agenda de Contactos son Necesarios para Proveer Atocompletado."
     </string>
-    <string name="action_inicio_sesion">Iniciar Sesión</string>
-    <string name="title_activity_register">Registrarse</string>
-    <string name="title_activity_maps">Parqueaderos</string>
-    <string name="title_activity_personal_data">Mis Datos Personales</string>
-    <string name="title_tarjeta_list">Medios de Pago</string>
-    <string name="title_tarjeta_detail">Detalle de Tarjeta</string>
+    <!-- Parkings -->
+    <string name="title_comprar_parkings">Recargar Parkings</string>
+    <string name="title_recargas_parkings">Mis Recargas</string>
+    <string name="title_saldo_parkings">Saldo Parkings</string>
+    <!-- Pagos -->
+    <string name="title_activity_checkin">Registrar Entrada</string>
+    <string name="title_activity_payment">Pagar</string>
     <string name="title_pago_list">Mis Pagos</string>
     <string name="title_pago_detail">Detalle de Pago</string>
-    <string name="title_contactenos">Contactenos</string>
-    <string name="title_compartir">Compartir</string>
-    <string name="title_comunicarse">Comunícate</string>
+    <!-- Medios de Pago -->
+    <string name="title_tarjeta_list">Medios de Pago</string>
+    <string name="title_tarjeta_detail">Detalle de Tarjeta</string>
+    <!-- Parqueaderos -->
+    <string name="title_activity_maps">Parqueaderos</string>
+    <!-- Personal -->
+    <string name="title_activity_personal_data">Mis Datos Personales</string>
+    <!-- Sesión -->
+    <string name="action_inicio_sesion">Iniciar Sesión</string>
     <string name="title_salir">Salir</string>
-    <string name="title_activity_payment">Realizar Pago</string>
+    <!-- Comunicarse -->
+    <string name="title_contactenos">Comunícate</string>
+    <string name="title_compartir">Compartir</string>
+    <string name="title_comunicarse">Hablemos</string>
 
     <string name="facebook_app_id">301290933540170</string>
     <string name="facebook_login_button_text">Continuar con Facebook</string>

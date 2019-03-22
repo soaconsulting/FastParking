@@ -102,7 +102,7 @@ public class FastParkingActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.id) {
             return true;
         }
 
@@ -117,8 +117,6 @@ public class FastParkingActivity extends AppCompatActivity
 
         if (id == R.id.nav_person) {
             startActivity(new Intent(getApplicationContext(), PersonalDataActivity.class));
-        } else if (id == R.id.nav_pay) {
-            startActivity(new Intent(getApplicationContext(), TarjetaListActivity.class));
         } else if (id == R.id.nav_history) {
             startActivity(new Intent(getApplicationContext(), PagoListActivity.class));
         } else if (id == R.id.nav_exit) {
@@ -129,8 +127,6 @@ public class FastParkingActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_ask) {
 
-        }  else if (id == R.id.nav_payment) {
-            startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

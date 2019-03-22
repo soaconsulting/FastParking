@@ -3,25 +3,33 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_person"
-            android:icon="@drawable/ic_person_black_24dp"
-            android:title="@string/title_activity_personal_data" />
-        <item
-            android:id="@+id/nav_pay"
+            android:id="@+id/nav_buy_parkings"
             android:icon="@drawable/ic_account_balance_wallet_black_24dp"
-            android:title="@string/title_tarjeta_list" />
+            android:title="@string/title_comprar_parkings" />
         <item
-            android:id="@+id/nav_payment"
-            android:icon="@drawable/ic_directions_car_black_24dp"
-            android:title="@string/title_activity_payment" />
+            android:id="@+id/nav_charges_list"
+            android:icon="@drawable/ic_account_balance_wallet_black_24dp"
+            android:title="@string/title_recargas_parkings" />
+        <item
+            android:id="@+id/nav_balance_parkings"
+            android:icon="@drawable/ic_account_balance_wallet_black_24dp"
+            android:title="@string/title_saldo_parkings" />
+
         <item
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_insert_chart_black_24dp"
             android:title="@string/title_pago_list" />
+
         <item
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_map_black_24dp"
             android:title="@string/title_activity_maps" />
+
+        <item
+            android:id="@+id/nav_person"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="@string/title_activity_personal_data" />
+
         <item
             android:id="@+id/nav_exit"
             android:icon="@drawable/ic_exit_to_app_black_24dp"

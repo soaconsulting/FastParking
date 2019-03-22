@@ -49,14 +49,20 @@ public class PersonalDataActivity extends AppCompatActivity {
 
     private void fillPersonalData(HashMap<String, String> usr) {
         TelephonyManager tm = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
-        String number = tm.getLine1Number();
-        nameField.setText(usr.get(UserSessionManager.KEY_NAME));
-        emailField.setText(usr.get(UserSessionManager.KEY_EMAIL));
+        String number = null;
+        try {
+            number = tm.getLine1Number();
+        } catch (SecurityException e) {
+            number = null;
+        }
+        nameField.setText(usr != null && usr.get(UserSessionManager.KEY_NAME) != null ? usr.get(UserSessionManager.KEY_NAME) : "");
+        emailField.setText(usr != null && usr.get(UserSessionManager.KEY_EMAIL) != null ? usr.get(UserSessionManager.KEY_EMAIL) : "");
         celularField.setText(number != null && !number.isEmpty() ? number : "");
-        if (usr.get(UserSessionManager.KEY_GENDER).equalsIgnoreCase("male"))
+        if (usr != null && usr.get(UserSessionManager.KEY_GENDER) != null && usr.get(UserSessionManager.KEY_GENDER).equalsIgnoreCase("male"))
             generoGroup.check(R.id.hombreRadioButton);
-        else
+        else if (usr != null && usr.get(UserSessionManager.KEY_GENDER) != null && usr.get(UserSessionManager.KEY_GENDER).equalsIgnoreCase("female"))
             generoGroup.check(R.id.mujerRadioButton);
+
         birthdayField.setText(usr.get(UserSessionManager.KEY_BDAY));
     }
 

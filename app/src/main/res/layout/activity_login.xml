@@ -34,7 +34,6 @@
     </ScrollView>
 
     <LinearLayout
-        android:id="@+id/email_login_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -45,7 +44,6 @@
         <ImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:id="@+id/imageView"
             android:background="@drawable/payparking_logo_titulo"
             android:layout_gravity="center_horizontal|top" />
 
