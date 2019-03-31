@@ -3,10 +3,7 @@ package com.soaconsultingonline.fastparking.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -16,6 +13,9 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -31,7 +31,6 @@ import android.widget.TextView;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.Profile;
@@ -53,7 +52,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -89,10 +88,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
         // User Session Manager
         session = new UserSessionManager(getApplicationContext());
+
         // FaceBook
         callbackManager = CallbackManager.Factory.create();
         info = (TextView)findViewById(R.id.info);
@@ -159,7 +158,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             return;
         }
 
-        getLoaderManager().initLoader(0, null, this);
+        LoaderManager.getInstance(this).initLoader(0, null, this);
     }
 
     private boolean mayRequestContacts() {
@@ -297,7 +296,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+    public android.support.v4.content.Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(this,
                 // Retrieve data rows for the device user's 'profile' contact.
                 Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
@@ -411,6 +410,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void setFacebookData(final LoginResult loginResult) {
@@ -421,17 +421,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         // Application code
                         PersonalData pd = new PersonalData();
+                        String id = null;
+                        String link = null;
                         try {
                             String email = response.getJSONObject().getString("email");
                             String name = response.getJSONObject().getString("name");
-                            String gender = response.getJSONObject().getString("gender");
+                            // String gender = response.getJSONObject().getString("gender");
                             String bday= response.getJSONObject().getString("birthday");
                             Profile profile = Profile.getCurrentProfile();
-                            String id = profile.getId();
-                            String link = profile.getLinkUri().toString();
+                            if (profile != null) {
+                                id = profile.getId();
+                                link = profile.getLinkUri().toString();
+                            }
                             pd.setEmail(email);
                             pd.setName(name);
-                            pd.setGender(gender);
+                            // pd.setGender(gender);
                             pd.setBirthday(bday);
                             pd.setId(id);
                             pd.setLink(link);
@@ -442,7 +446,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     }
                 });
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,email,name,first_name,last_name,gender,birthday");
+        // parameters.putString("fields", "id,email,name,first_name,last_name,gender,birthday");
+        parameters.putString("fields", "id,email,name,first_name,last_name,birthday");
         request.setParameters(parameters);
         request.executeAsync();
     }

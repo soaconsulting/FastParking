@@ -58,7 +58,7 @@ public class FastParkingActivity extends AppCompatActivity
         TextView userProfileName = (TextView) navigationView.getHeaderView(0).findViewById(R.id.userProfileName);
 
         // Session class instance
-        session = new UserSessionManager(getApplicationContext());
+        // session = new UserSessionManager(getApplicationContext());
         HashMap<String, String> user = session.getUserDetails();
         profilePictureView.setProfileId(user.get(UserSessionManager.KEY_ID));
         userProfileName.setText(user.get(UserSessionManager.KEY_NAME));
