@@ -15,28 +15,13 @@ import com.soaconsultingonline.fastparking.R;
 
 public class PaymentActivity extends AppCompatActivity {
 
-    private Button mButton;
-    private TextView barCode;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        // Scanner
-        barCode = (TextView) findViewById(R.id.barCodeTextView);
-        mButton = (Button) findViewById(R.id.scanButton);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IntentIntegrator integrator = new IntentIntegrator(PaymentActivity.this);
-                integrator.initiateScan();
-            }
-        });
     }
 
     @Override
@@ -44,7 +29,6 @@ public class PaymentActivity extends AppCompatActivity {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanResult != null) {
             String re = scanResult.getContents();
-            barCode.setText(re);
         }
     }
 

@@ -144,6 +144,6 @@
         android:layout_below="@+id/cumpleTextView"
         android:layout_alignEnd="@+id/cumpleEditText"
         android:layout_alignParentStart="true"
-        android:background="@color/colorPrimary" />
+        android:background="@drawable/btn_rounded" />
 
 </RelativeLayout>

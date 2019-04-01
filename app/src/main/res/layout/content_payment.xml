@@ -13,54 +13,41 @@
     tools:showIn="@layout/activity_payment"
     android:background="@drawable/background_hdpi">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scanButton"
-        android:background="@drawable/fp_scan_button"
-        android:layout_below="@+id/scanTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp" />
-
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Scanea tu Tiquete o Acerca la Tarjeta al Celular (NFC)"
         android:id="@+id/scanTextView"
-        android:gravity="center"
-        android:textColor="@color/abc_input_method_navigation_guard"
-        android:textStyle="bold"
-        android:background="@color/colorPrimary"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="false"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:text="@string/title_pago"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/barCodeTextView"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:layout_below="@+id/scanButton"
-        android:layout_alignParentEnd="true" />
+        android:textColor="@color/browser_actions_text_color"
+        android:textStyle="bold" />
+
+    <include
+        android:id="@+id/include_content_bill"
+        layout="@layout/content_bill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scanTextView" />
 
     <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Realizar Pago"
         android:id="@+id/pagarButton"
-        android:background="@color/colorPrimary"
-        android:layout_below="@+id/barCodeTextView"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include_content_bill"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/btn_rounded"
+        android:text="@string/title_realizar_pago" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Declinar Pago"
-        android:background="@color/colorPrimary"
-        android:layout_marginTop="28dp"
         android:layout_below="@+id/pagarButton"
-        android:layout_alignParentEnd="true" />
+        android:background="@drawable/btn_rounded"
+        android:text="@string/title_declinar_pago" />
+
 </RelativeLayout>

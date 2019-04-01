@@ -25,6 +25,9 @@
     <string name="title_activity_payment">Pagar</string>
     <string name="title_pago_list">Mis Pagos</string>
     <string name="title_pago_detail">Detalle de Pago</string>
+    <string name="title_pago">Esta es la liquidación de tu pago</string>
+    <string name="title_realizar_pago">Realizar Pago</string>
+    <string name="title_declinar_pago">Declinar Pago</string>
     <!-- Medios de Pago -->
     <string name="title_tarjeta_list">Medios de Pago</string>
     <string name="title_tarjeta_detail">Detalle de Tarjeta</string>
@@ -39,6 +42,17 @@
     <string name="title_contactenos">Comunícate</string>
     <string name="title_compartir">Compartir</string>
     <string name="title_comunicarse">Hablemos</string>
+    <!-- Liquidación -->
+    <string name="title_liq_usuario">Usuario</string>
+    <string name="title_liq_entrada">Fecha Entrada</string>
+    <string name="title_liq_salida">Fecha Salida</string>
+    <string name="title_liq_tiempo">Minutos</string>
+    <string name="title_liq_vlr_unidad">Valor Minuto</string>
+    <string name="title_liq_subtotal">Subtotal</string>
+    <string name="title_liq_descuento">Descuento</string>
+    <string name="title_liq_impuestos">Impuestos</string>
+    <string name="title_liq_total">Total</string>
+    <string name="title_liq_parqueadero">Parqueadero</string>
 
     <string name="facebook_app_id">301290933540170</string>
     <string name="facebook_login_button_text">Continuar con Facebook</string>
