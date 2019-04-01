@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.FastParkingActivity"
-    tools:showIn="@layout/app_bar_fast_parking"
-    android:background="@drawable/background_hdpi">
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".activity.FastParkingActivity"
+        tools:showIn="@layout/app_bar_fast_parking"
+        android:background="@drawable/background_hdpi"
         android:orientation="vertical"
         android:weightSum="1"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true">
 
         <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:background="@drawable/payparking_logo_titulo"
+            android:layout_width="@dimen/com_facebook_profilepictureview_preset_size_large"
+            android:layout_height="@dimen/com_facebook_profilepictureview_preset_size_large"
             android:layout_gravity="center_horizontal|top"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@drawable/payparking_logo_titulo"
+            android:contentDescription="@string/app_name" />
 
-    <Button
-        android:id="@+id/checkinBtn"
-        style="?android:textAppearanceSmall"
+    <include
+        layout="@layout/activity_maps_current"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/title_activity_checkin"
-        android:textStyle="bold"
-        android:background="@drawable/btn_rounded"
-        android:layout_marginBottom="50dp" />
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
+
+        <Button
+            android:id="@+id/checkinBtn"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@drawable/btn_rounded"
+            android:text="@string/title_activity_checkin"
+            android:textStyle="bold" />
 
     <Button
         android:id="@+id/pagarBtn"
@@ -48,6 +52,5 @@
         android:background="@drawable/btn_rounded"
         android:layout_marginBottom="10dp" />
 
-    </LinearLayout>
+</LinearLayout>
 
-</RelativeLayout>

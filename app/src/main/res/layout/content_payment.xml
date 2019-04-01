@@ -39,6 +39,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/include_content_bill"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:background="@drawable/btn_rounded"
         android:text="@string/title_realizar_pago" />
