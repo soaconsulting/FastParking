@@ -30,7 +30,8 @@ public class FastParkingActivity extends AppCompatActivity
 
     // User Session Manager Class
     private UserSessionManager session;
-    private Button mButton;
+    private Button pagarBtn;
+    private Button checkinBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +67,19 @@ public class FastParkingActivity extends AppCompatActivity
         profilePictureView.setProfileId(user.get(UserSessionManager.KEY_ID));
         userProfileName.setText(user.get(UserSessionManager.KEY_NAME));
 
-        mButton = (Button) findViewById(R.id.pagarBtn);
-        mButton.setOnClickListener(new View.OnClickListener() {
+        pagarBtn = (Button) findViewById(R.id.pagarBtn);
+        pagarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+            }
+        });
+
+        checkinBtn = (Button) findViewById(R.id.checkinBtn);
+        checkinBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), CheckinActivity.class));
             }
         });
 
@@ -121,18 +130,28 @@ public class FastParkingActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_person) {
-            startActivity(new Intent(getApplicationContext(), PersonalDataActivity.class));
+        if (id == R.id.nav_buy_parkings) {
+            // Compra de Puntos
+        } else if (id == R.id.nav_charges_list) {
+            // Consulta Histórico de Compra de Puntos
+        } else if (id == R.id.nav_balance_parkings) {
+            // Consulta Saldo de Puntos
         } else if (id == R.id.nav_history) {
+            // Histórico de Pagos Realizados
             startActivity(new Intent(getApplicationContext(), PagoListActivity.class));
-        } else if (id == R.id.nav_exit) {
-            session.logoutUser();
         } else if (id == R.id.nav_map) {
+            // Consulta de Parquaderos
             startActivity(new Intent(getApplicationContext(), MapsActivity.class));
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.nav_person) {
+            // Datos Personales
+            startActivity(new Intent(getApplicationContext(), PersonalDataActivity.class));
+        } else if (id == R.id.nav_exit) {
+            // Salir
+            session.logoutUser();
+        }  else if (id == R.id.nav_share) {
+            // Compartir
         } else if (id == R.id.nav_ask) {
-
+            // Hablemos
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

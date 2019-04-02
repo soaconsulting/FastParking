@@ -121,6 +121,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.soaconsultingonline.fastparking.activity.FastParkingActivity" />
         </activity>
+        <activity
+            android:name=".activity.CheckinActivity"
+            android:label="@string/title_activity_checkin"
+            android:parentActivityName=".activity.FastParkingActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.soaconsultingonline.fastparking.activity.FastParkingActivity" />
+        </activity>
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges=
                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
