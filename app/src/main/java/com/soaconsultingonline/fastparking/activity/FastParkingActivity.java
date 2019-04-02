@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,7 +21,7 @@ import android.widget.TextView;
 import com.facebook.login.widget.ProfilePictureView;
 import com.soaconsultingonline.fastparking.R;
 import com.soaconsultingonline.fastparking.security.UserSessionManager;
-import com.squareup.picasso.Picasso;
+
 
 import java.util.HashMap;
 
@@ -70,6 +73,9 @@ public class FastParkingActivity extends AppCompatActivity
                 startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
             }
         });
+
+        addFragment(new MapsActivityCurrentPlace(), false, "Mapa");
+
     }
 
     @Override public void onConfigurationChanged(final Configuration newConfig) {
@@ -132,5 +138,16 @@ public class FastParkingActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void addFragment(Fragment fragment, boolean addToBackStack, String tag) {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
+
+        if (addToBackStack) {
+            ft.addToBackStack(tag);
+        }
+        ft.replace(R.id.container_map, fragment, tag);
+        ft.commitAllowingStateLoss();
     }
 }
