@@ -2,6 +2,7 @@ package com.soaconsultingonline.fastparking.database.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 
 /**
@@ -24,6 +25,8 @@ public class Parqueadero implements Serializable {
 	private String telefono;
 	private Ciudad ciudade;
 	private Empresa empresa;
+	private String codigoParqueadero;
+	private List<ParametroParqueadero> parametroParqueadero;
 
 	public Parqueadero() {
 	}
@@ -130,6 +133,22 @@ public class Parqueadero implements Serializable {
 
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
+	}
+
+	public String getCodigoParqueadero() {
+		return codigoParqueadero;
+	}
+
+	public void setCodigoParqueadero(String codigoParqueadero) {
+		this.codigoParqueadero = codigoParqueadero;
+	}
+
+	public List<ParametroParqueadero> getParametroParqueadero() {
+		return parametroParqueadero;
+	}
+
+	public void setParametroParqueadero(List<ParametroParqueadero> parametroParqueadero) {
+		this.parametroParqueadero = parametroParqueadero;
 	}
 
 }
