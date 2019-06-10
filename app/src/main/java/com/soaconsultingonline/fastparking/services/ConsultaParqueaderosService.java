@@ -2,9 +2,9 @@ package com.soaconsultingonline.fastparking.services;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
-import com.soaconsultingonline.fastparking.activity.MapsActivity;
 import com.soaconsultingonline.fastparking.database.vo.ParqueaderoVO;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -25,7 +25,7 @@ public abstract class ConsultaParqueaderosService extends AsyncTask<String, Void
      *
      * @param activity
      */
-    public ConsultaParqueaderosService(MapsActivity activity) {
+    public ConsultaParqueaderosService(FragmentActivity activity) {
         dialog = new ProgressDialog(activity);
     }
 

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -31,6 +34,7 @@ import com.soaconsultingonline.fastparking.database.vo.ParqueaderoVO;
 import com.soaconsultingonline.fastparking.services.ConsultaParqueaderosService;
 import com.soaconsultingonline.fastparking.services.FPProperties;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
@@ -44,6 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LocationRequest mLocationRequest;
     List<ParqueaderoVO> parqueaderos = null;
     private AlertDialog alertDialog;
+    private List<Circle> parkingCircles = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +72,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 // Se adicionan los marcadores al mapa
                 if (parqueaderos != null && !parqueaderos.isEmpty()) {
                     for(ParqueaderoVO p : parqueaderos) {
-                        if (p.getActivo() != null && p.getActivo().equalsIgnoreCase("S"))
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(p.getLatitud().doubleValue(), p.getLongitud().doubleValue())).title(p.getNombre() + ": " + p.getDireccion()));
+                        if (p.getActivo() != null && p.getActivo().equalsIgnoreCase("S")) {
+                            LatLng mark = new LatLng(p.getLatitud().doubleValue(), p.getLongitud().doubleValue());
+                            CircleOptions circleoptions = new CircleOptions().strokeWidth(5).strokeColor(Color.BLUE).fillColor(Color.parseColor("#500084d3"));
+                            mMap.addMarker(new MarkerOptions().position(mark).title(p.getNombre() + ": " + p.getDireccion()));
+                            Circle circle = mMap.addCircle(circleoptions.center(mark).radius(50.0));
+                            parkingCircles.add(circle);
+                        }
                     }
                 } else {
                     alertDialog.show();
@@ -104,7 +114,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         //Initialize Google Play Services
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -168,7 +178,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
 
         //stop location updates
         if (mGoogleApiClient != null) {

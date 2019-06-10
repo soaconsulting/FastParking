@@ -19,8 +19,8 @@
         android:layout_alignParentEnd="true">
 
         <ImageView
-            android:layout_width="@dimen/com_facebook_profilepictureview_preset_size_large"
-            android:layout_height="@dimen/com_facebook_profilepictureview_preset_size_large"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_horizontal|top"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:background="@drawable/payparking_logo_titulo"
@@ -30,7 +30,7 @@
     <LinearLayout
         android:id="@+id/container_map"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
+        android:layout_height="300dp"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:orientation="horizontal"></LinearLayout>

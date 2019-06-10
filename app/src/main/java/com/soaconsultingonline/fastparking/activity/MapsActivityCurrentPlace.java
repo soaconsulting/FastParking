@@ -2,16 +2,22 @@ package com.soaconsultingonline.fastparking.activity;
 
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +30,19 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.soaconsultingonline.fastparking.R;
+import com.soaconsultingonline.fastparking.animation.BounceAnimation;
+import com.soaconsultingonline.fastparking.database.vo.ParqueaderoVO;
+import com.soaconsultingonline.fastparking.services.ConsultaParqueaderosService;
+import com.soaconsultingonline.fastparking.services.FPProperties;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class MapsActivityCurrentPlace extends Fragment implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
@@ -39,9 +54,33 @@ public class MapsActivityCurrentPlace extends Fragment implements GoogleApiClien
     private double longitude;
     private double latitude;
 
+    List<ParqueaderoVO> parqueaderos = null;
+    private AlertDialog alertDialog;
+    private List<Circle> parkingCircles = new LinkedList<>();
+
+    private final Handler mHandler;
+    private Runnable mAnimation;
+
+    private String parkingCode = null;
+
+    public MapsActivityCurrentPlace(){
+        mHandler = new Handler();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        alertDialog = new AlertDialog.Builder(getContext()).create();
+        alertDialog.setTitle("Mensaje");
+        alertDialog.setMessage("No se pudo cargar los Marcadores.");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
@@ -63,7 +102,7 @@ public class MapsActivityCurrentPlace extends Fragment implements GoogleApiClien
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
 
     }
 
@@ -109,6 +148,34 @@ public class MapsActivityCurrentPlace extends Fragment implements GoogleApiClien
                     map.setMyLocationEnabled(true);
                     map.getUiSettings().setMyLocationButtonEnabled(true);
                 }
+
+                ConsultaParqueaderosService service = new ConsultaParqueaderosService(getActivity()) {
+                    @Override
+                    public void onResponseReceived(Object result) {
+                        parqueaderos = (List<ParqueaderoVO>) result;
+                        // Se adicionan los marcadores al mapa
+                        if (parqueaderos != null && !parqueaderos.isEmpty()) {
+                            for(ParqueaderoVO p : parqueaderos) {
+                                if (p.getActivo() != null && p.getActivo().equalsIgnoreCase("S")) {
+                                    LatLng mark = new LatLng(p.getLatitud().doubleValue(), p.getLongitud().doubleValue());
+                                    CircleOptions circleoptions = new CircleOptions().strokeWidth(5).strokeColor(Color.BLUE).fillColor(Color.parseColor("#500084d3"));
+                                    mMap.addMarker(new MarkerOptions().position(mark).title(p.getNombre() + ": " + p.getDireccion()));
+                                    Circle circle = mMap.addCircle(circleoptions.center(mark).radius(50.0));
+                                    parkingCircles.add(circle);
+                                }
+                            }
+                        } else {
+                            alertDialog.show();
+                        }
+                    }
+                };
+
+                try {
+                    service.execute(FPProperties.getInstance(getActivity().getApplicationContext()).getProperty("ConsultaParqueaderosService"));
+                } catch (Throwable t) {
+                    Log.e("MapsActivityCurrent", t.getMessage(), t);
+                }
+
             }
         });
 
@@ -192,7 +259,7 @@ public class MapsActivityCurrentPlace extends Fragment implements GoogleApiClien
     //Function to move the map
     private void moveMap() {
         //String to display current latitude and longitude
-        String msg = latitude + ", "+longitude;
+        String msg = "lat: " + latitude + ", lon: " + longitude;
 
         //Creating a LatLng Object to store Coordinates
         LatLng latLng = new LatLng(latitude, longitude);
@@ -201,12 +268,81 @@ public class MapsActivityCurrentPlace extends Fragment implements GoogleApiClien
         mMap.addMarker(new MarkerOptions()
                 .position(latLng) //setting position
                 .draggable(true) //Making the marker draggable
-                .title("Current Location")); //Adding a title
+                .title(msg)); //Adding a title
 
         //Moving the camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
         //Animating the camera
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
+
+        mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+
+            @Override
+            public void onMarkerDragStart(Marker marker) {
+
+            }
+
+            @Override
+            public void onMarkerDragEnd(Marker marker) {
+                LatLng pos = marker.getPosition();
+                longitude = pos.longitude;
+                latitude = pos.latitude;
+                String msg = "lat: " + latitude + ", lon: " + longitude;
+                marker.hideInfoWindow();
+                marker.setTitle(msg);
+                marker.showInfoWindow();
+                // This causes the marker at Perth to bounce into position when it is clicked.
+                final long start = SystemClock.uptimeMillis();
+                final long duration = 1500L;
+
+                // Cancels the previous animation
+                mHandler.removeCallbacks(mAnimation);
+
+                // Starts the bounce animation
+                mAnimation = new BounceAnimation(start, duration, marker, mHandler);
+                mHandler.post(mAnimation);
+
+                for (Circle c : parkingCircles) {
+                    if (isCircleContains(c, pos)) {
+                        parkingCode = "S";
+                        break;
+                    } else {
+                        parkingCode = "N";
+                    }
+                }
+
+            }
+
+            @Override
+            public void onMarkerDrag(Marker marker) {
+
+            }
+        });
+    }
+
+    /**
+     * Check if a circle contains a point
+     *
+     * @param circle
+     * @param point
+     */
+    private boolean isCircleContains(Circle circle, LatLng point) {
+        double r = circle.getRadius();
+        LatLng center = circle.getCenter();
+        double cX = center.latitude;
+        double cY = center.longitude;
+        double pX = point.latitude;
+        double pY = point.longitude;
+
+        float[] results = new float[1];
+
+        Location.distanceBetween(cX, cY, pX, pY, results);
+
+        if(results[0] < r) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
