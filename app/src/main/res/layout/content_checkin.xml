@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/editText17"
+            android:id="@+id/checkinLblUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -20,7 +20,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/editText18"
+            android:id="@+id/checkinTxtUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -35,7 +35,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/editText19"
+            android:id="@+id/checkinLblParqueadero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -44,7 +44,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/editText20"
+            android:id="@+id/checkinTxtParqueadero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -59,7 +59,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/editText1"
+            android:id="@+id/checkinLblFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -68,7 +68,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/editText2"
+            android:id="@+id/checkinTxtFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -83,7 +83,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/editText7"
+            android:id="@+id/checkinLblVlrMin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -92,7 +92,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/editText8"
+            android:id="@+id/checkinTxtVlrMin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

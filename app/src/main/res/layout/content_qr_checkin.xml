@@ -35,7 +35,7 @@
         android:layout_below="@+id/scanTextView" />
 
     <Button
-        android:id="@+id/checkinButton"
+        android:id="@+id/aceptCheckinButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/include_content_checkin"
@@ -45,10 +45,19 @@
         android:text="@string/title_gen_qr_checkin" />
 
     <Button
+        android:id="@+id/cancelCheckinButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/checkinButton"
+        android:layout_below="@+id/aceptCheckinButton"
         android:background="@drawable/btn_rounded"
         android:text="@string/title_declinar_checkin" />
+
+    <ImageView
+        android:id="@+id/imgResultQr"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/cancelCheckinButton" />
 
 </RelativeLayout>

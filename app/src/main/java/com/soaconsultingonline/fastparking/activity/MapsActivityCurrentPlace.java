@@ -3,6 +3,7 @@ package com.soaconsultingonline.fastparking.activity;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -62,6 +63,18 @@ public class MapsActivityCurrentPlace extends Fragment implements GoogleApiClien
     private Runnable mAnimation;
 
     private String parkingCode = null;
+
+    OnDataPass dataPasser;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        dataPasser = (OnDataPass) context;
+    }
+
+    public void passData(String data) {
+        dataPasser.onDataPass(data);
+    }
 
     public MapsActivityCurrentPlace(){
         mHandler = new Handler();
@@ -285,13 +298,11 @@ public class MapsActivityCurrentPlace extends Fragment implements GoogleApiClien
 
             @Override
             public void onMarkerDragEnd(Marker marker) {
+                ParqueaderoVO p;
+                String msg = null;
                 LatLng pos = marker.getPosition();
                 longitude = pos.longitude;
                 latitude = pos.latitude;
-                String msg = "lat: " + latitude + ", lon: " + longitude;
-                marker.hideInfoWindow();
-                marker.setTitle(msg);
-                marker.showInfoWindow();
                 // This causes the marker at Perth to bounce into position when it is clicked.
                 final long start = SystemClock.uptimeMillis();
                 final long duration = 1500L;
@@ -303,14 +314,21 @@ public class MapsActivityCurrentPlace extends Fragment implements GoogleApiClien
                 mAnimation = new BounceAnimation(start, duration, marker, mHandler);
                 mHandler.post(mAnimation);
 
-                for (Circle c : parkingCircles) {
-                    if (isCircleContains(c, pos)) {
-                        parkingCode = "S";
-                        break;
-                    } else {
-                        parkingCode = "N";
-                    }
+                p = searchParking(pos);
+
+                if (p != null) {
+                    parkingCode = p.getCodigoParqueadero();
+                    msg = "Parqueadero: " + p.getNombre() + " [" + parkingCode + "]";
+                } else {
+                    parkingCode = "No Disponible";
+                    msg = "Parqueadero: " + parkingCode;
                 }
+
+                passData(parkingCode);
+
+                marker.hideInfoWindow();
+                marker.setTitle(msg);
+                marker.showInfoWindow();
 
             }
 
@@ -344,5 +362,32 @@ public class MapsActivityCurrentPlace extends Fragment implements GoogleApiClien
         } else {
             return false;
         }
+    }
+
+    /**
+     * Busca el código del parqueadero
+     *
+     * @param point
+     */
+    private ParqueaderoVO searchParking(LatLng point) {
+        ParqueaderoVO park = null;
+        for (Circle c : parkingCircles) {
+            if (isCircleContains(c, point)) {
+                for(ParqueaderoVO p : parqueaderos) {
+                    if (p.getLatitud().doubleValue() == c.getCenter().latitude && p.getLongitud().doubleValue() == c.getCenter().longitude) {
+                        park = p;
+                        break;
+                    }
+                }
+                break;
+            } else {
+                park = null;
+            }
+        }
+        return park;
+    }
+
+    public interface OnDataPass {
+        public void onDataPass(String data);
     }
 }

@@ -22,16 +22,21 @@ import com.facebook.login.widget.ProfilePictureView;
 import com.soaconsultingonline.fastparking.R;
 import com.soaconsultingonline.fastparking.security.UserSessionManager;
 
-
 import java.util.HashMap;
 
 public class FastParkingActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MapsActivityCurrentPlace.OnDataPass {
 
     // User Session Manager Class
     private UserSessionManager session;
     private Button pagarBtn;
     private Button checkinBtn;
+    private String parkingCode;
+
+    @Override
+    public void onDataPass(String data) {
+        parkingCode = data;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +84,9 @@ public class FastParkingActivity extends AppCompatActivity
         checkinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), CheckinActivity.class));
+                Intent intent = new Intent(getApplicationContext(), CheckinActivity.class);
+                intent.putExtra("parkingCode", parkingCode);
+                startActivity(intent);
             }
         });
 
