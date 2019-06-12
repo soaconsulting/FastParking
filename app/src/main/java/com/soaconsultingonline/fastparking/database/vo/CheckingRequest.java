@@ -23,7 +23,6 @@ public class CheckingRequest implements Serializable {
 	}
 	
 	private ServiciosParqueaderoVO servicioParqueadero;
-	private PagoVO pago;
 
 	/**
 	 * @return the servicioParqueadero
@@ -36,18 +35,6 @@ public class CheckingRequest implements Serializable {
 	 */
 	public void setServicioParqueadero(ServiciosParqueaderoVO servicioParqueadero) {
 		this.servicioParqueadero = servicioParqueadero;
-	}
-	/**
-	 * @return the pago
-	 */
-	public PagoVO getPago() {
-		return pago;
-	}
-	/**
-	 * @param pago the pago to set
-	 */
-	public void setPago(PagoVO pago) {
-		this.pago = pago;
 	}
 	
 
