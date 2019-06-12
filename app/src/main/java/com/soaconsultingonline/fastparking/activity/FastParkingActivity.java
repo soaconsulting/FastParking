@@ -139,12 +139,10 @@ public class FastParkingActivity extends AppCompatActivity
 
         if (id == R.id.nav_buy_parkings) {
             // Compra de Puntos
-        } else if (id == R.id.nav_charges_list) {
-            // Consulta Histórico de Compra de Puntos
         } else if (id == R.id.nav_balance_parkings) {
             // Consulta Saldo de Puntos
         } else if (id == R.id.nav_history) {
-            // Histórico de Pagos Realizados
+            // Histórico de Pagos Realizados (Recargas)
             startActivity(new Intent(getApplicationContext(), PagoListActivity.class));
         } else if (id == R.id.nav_map) {
             // Consulta de Parquaderos

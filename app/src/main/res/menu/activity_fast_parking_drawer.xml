@@ -7,18 +7,14 @@
             android:icon="@drawable/ic_account_balance_wallet_black_24dp"
             android:title="@string/title_comprar_parkings" />
         <item
-            android:id="@+id/nav_charges_list"
-            android:icon="@drawable/ic_account_balance_wallet_black_24dp"
-            android:title="@string/title_recargas_parkings" />
-        <item
             android:id="@+id/nav_balance_parkings"
-            android:icon="@drawable/ic_account_balance_wallet_black_24dp"
+            android:icon="@drawable/ic_directions_car_black_24dp"
             android:title="@string/title_saldo_parkings" />
 
         <item
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_insert_chart_black_24dp"
-            android:title="@string/title_pago_list" />
+            android:title="@string/title_recargas_parkings" />
 
         <item
             android:id="@+id/nav_map"
