@@ -2,104 +2,93 @@
 
 
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/background_light">
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF"
+    >
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/checkinLblUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_usuario"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
             android:id="@+id/checkinTxtUsuario"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/checkinLblParqueadero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_parqueadero"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
             android:id="@+id/checkinTxtParqueadero"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/checkinLblFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_entrada"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
             android:id="@+id/checkinTxtFecha"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/checkinLblVlrMin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_vlr_unidad"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
             android:id="@+id/checkinTxtVlrMin"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
 </TableLayout>

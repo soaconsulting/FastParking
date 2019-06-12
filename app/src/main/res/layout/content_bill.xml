@@ -2,248 +2,218 @@
 
 
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/background_light">
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF">
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/editText17"
+            android:id="@+id/liqLblUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_usuario"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
-            android:id="@+id/editText18"
-            android:layout_width="wrap_content"
+            android:id="@+id/liqTxtUsuario"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/editText19"
+            android:id="@+id/liqLblParqueadero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_parqueadero"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
-            android:id="@+id/editText20"
-            android:layout_width="wrap_content"
+            android:id="@+id/liqTxtParqueadero"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/editText1"
+            android:id="@+id/liqLblFechaEntrada"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_entrada"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
-            android:id="@+id/editText2"
-            android:layout_width="wrap_content"
+            android:id="@+id/liqTxtFechaEntrada"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/editText3"
+            android:id="@+id/liqLblFechaSalida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_salida"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
-            android:id="@+id/editText4"
-            android:layout_width="wrap_content"
+            android:id="@+id/liqTxtFechaSalida"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/editText5"
+            android:id="@+id/liqLblMinutos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_tiempo"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
-            android:id="@+id/editText6"
-            android:layout_width="wrap_content"
+            android:id="@+id/liqTxtMinutos"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/editText7"
+            android:id="@+id/liqLblVlrMinuto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_vlr_unidad"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
-            android:id="@+id/editText8"
-            android:layout_width="wrap_content"
+            android:id="@+id/liqTxtVlrMinuto"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/editText9"
+            android:id="@+id/liqLblSubtotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_subtotal"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
-            android:id="@+id/editText10"
-            android:layout_width="wrap_content"
+            android:id="@+id/liqTxtSubtotal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/editText11"
+            android:id="@+id/liqLblDescuento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_descuento"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
-            android:id="@+id/editText12"
-            android:layout_width="wrap_content"
+            android:id="@+id/liqTxtDescuento"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/editText13"
+            android:id="@+id/liqLblImpuestos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_impuestos"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
-            android:id="@+id/editText14"
-            android:layout_width="wrap_content"
+            android:id="@+id/liqTxtImpuestos"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/editText15"
+            android:id="@+id/liqLblTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
             android:text="@string/title_liq_total"
-            android:textSize="24sp" />
+            android:textSize="14sp"
+            android:paddingRight="5dp" />
 
         <TextView
-            android:id="@+id/editText16"
-            android:layout_width="wrap_content"
+            android:id="@+id/liqTxtTotal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:ems="10"
-            android:gravity="end"
+            android:gravity="start"
             android:text=""
-            android:textSize="24sp" />
+            android:textSize="14sp" />
     </TableRow>
 
 </TableLayout>
