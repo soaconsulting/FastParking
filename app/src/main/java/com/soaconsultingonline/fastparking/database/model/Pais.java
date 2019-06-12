@@ -1,7 +1,6 @@
 package com.soaconsultingonline.fastparking.database.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 
 /**
@@ -14,7 +13,6 @@ public class Pais implements Serializable {
 	private Long idPais;
 	private String codigo;
 	private String nombre;
-	private List<Departamento> departamentos;
 
 	public Pais() {
 	}
@@ -41,28 +39,6 @@ public class Pais implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public List<Departamento> getDepartamentos() {
-		return this.departamentos;
-	}
-
-	public void setDepartamentos(List<Departamento> departamentos) {
-		this.departamentos = departamentos;
-	}
-
-	public Departamento addDepartamento(Departamento departamento) {
-		getDepartamentos().add(departamento);
-		departamento.setPais(this);
-
-		return departamento;
-	}
-
-	public Departamento removeDepartamento(Departamento departamento) {
-		getDepartamentos().remove(departamento);
-		departamento.setPais(null);
-
-		return departamento;
 	}
 
 }

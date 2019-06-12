@@ -18,7 +18,6 @@ public class InventarioPuntos implements Serializable {
 	private Date fecha;
 	private BigDecimal salida;
 	private ConceptosInventario conceptosInventario;
-	private PuntosGanados puntosGanado;
 	private Usuario usuario;
 
 	public InventarioPuntos() {
@@ -70,14 +69,6 @@ public class InventarioPuntos implements Serializable {
 
 	public void setConceptosInventario(ConceptosInventario conceptosInventario) {
 		this.conceptosInventario = conceptosInventario;
-	}
-
-	public PuntosGanados getPuntosGanado() {
-		return this.puntosGanado;
-	}
-
-	public void setPuntosGanado(PuntosGanados puntosGanado) {
-		this.puntosGanado = puntosGanado;
 	}
 
 	public Usuario getUsuario() {

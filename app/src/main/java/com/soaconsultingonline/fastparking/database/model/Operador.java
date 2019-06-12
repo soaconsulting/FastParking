@@ -1,7 +1,6 @@
 package com.soaconsultingonline.fastparking.database.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 
 /**
@@ -25,7 +24,6 @@ public class Operador implements Serializable {
 	private String numeroIdRepLegal;
 	private String personaContacto;
 	private String telefono;
-	private List<Empresa> empresas;
 	private Ciudad ciudade;
 	private Identificacion identificacione1;
 	private Identificacion identificacione2;
@@ -143,28 +141,6 @@ public class Operador implements Serializable {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
-	}
-
-	public List<Empresa> getEmpresas() {
-		return this.empresas;
-	}
-
-	public void setEmpresas(List<Empresa> empresas) {
-		this.empresas = empresas;
-	}
-
-	public Empresa addEmpresa(Empresa empresa) {
-		getEmpresas().add(empresa);
-		empresa.setOperadore(this);
-
-		return empresa;
-	}
-
-	public Empresa removeEmpresa(Empresa empresa) {
-		getEmpresas().remove(empresa);
-		empresa.setOperadore(null);
-
-		return empresa;
 	}
 
 	public Ciudad getCiudade() {

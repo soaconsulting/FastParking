@@ -2,6 +2,7 @@ package com.soaconsultingonline.fastparking.database.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -15,25 +16,31 @@ public class ServiciosParqueadero implements Serializable {
 
 	private Long idServicio;
 	private String codigoEan;
-	private String codigoTicket;
-	private Date fechaIngreso;
-	private Date fechaSalida;
+	private String codigoQR;
+	private Timestamp fechaIngreso;
+	private Timestamp fechaSalida;
 	private Date fechaServicio;
 	private String numeroFactura;
 	private String placa;
 	private BigDecimal tiempoMinutos;
-	private BigDecimal valorFactura;
-	private List<Pago> pagos;
+	private BigDecimal valorFactura; // totalBruto - Descuento + Impuestos
 	private List<Pqr> pqrs;
 	private List<HistorialEstadosServicio> historialEstadosServicio;
+	private List<RedencionPuntos> redencionPuntos;
 	private Parqueadero parqueadero;
 	private Usuario usuario;
+	private BigDecimal totalBruto; // minutos * valorMinuto
+	private BigDecimal descuento;
+	private BigDecimal impuestos;
+	private BigDecimal valorPP; // Valor que cobra la plataforma
+	private BigDecimal impuestosPP; // Impuesto por facturar en la plataforma
+	private BigDecimal totalPagar; // valorFactura + valorPP + impuestosPP
 
 	public ServiciosParqueadero() {
 	}
 
 	public Long getIdServicio() {
-		return this.idServicio;
+		return idServicio;
 	}
 
 	public void setIdServicio(Long idServicio) {
@@ -41,39 +48,39 @@ public class ServiciosParqueadero implements Serializable {
 	}
 
 	public String getCodigoEan() {
-		return this.codigoEan;
+		return codigoEan;
 	}
 
 	public void setCodigoEan(String codigoEan) {
 		this.codigoEan = codigoEan;
 	}
 
-	public String getCodigoTicket() {
-		return this.codigoTicket;
+	public String getCodigoQR() {
+		return codigoQR;
 	}
 
-	public void setCodigoTicket(String codigoTicket) {
-		this.codigoTicket = codigoTicket;
+	public void setCodigoQR(String codigoQR) {
+		this.codigoQR = codigoQR;
 	}
 
-	public Date getFechaIngreso() {
-		return this.fechaIngreso;
+	public Timestamp getFechaIngreso() {
+		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(Date fechaIngreso) {
+	public void setFechaIngreso(Timestamp fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 
-	public Date getFechaSalida() {
-		return this.fechaSalida;
+	public Timestamp getFechaSalida() {
+		return fechaSalida;
 	}
 
-	public void setFechaSalida(Date fechaSalida) {
+	public void setFechaSalida(Timestamp fechaSalida) {
 		this.fechaSalida = fechaSalida;
 	}
 
 	public Date getFechaServicio() {
-		return this.fechaServicio;
+		return fechaServicio;
 	}
 
 	public void setFechaServicio(Date fechaServicio) {
@@ -81,7 +88,7 @@ public class ServiciosParqueadero implements Serializable {
 	}
 
 	public String getNumeroFactura() {
-		return this.numeroFactura;
+		return numeroFactura;
 	}
 
 	public void setNumeroFactura(String numeroFactura) {
@@ -89,7 +96,7 @@ public class ServiciosParqueadero implements Serializable {
 	}
 
 	public String getPlaca() {
-		return this.placa;
+		return placa;
 	}
 
 	public void setPlaca(String placa) {
@@ -97,7 +104,7 @@ public class ServiciosParqueadero implements Serializable {
 	}
 
 	public BigDecimal getTiempoMinutos() {
-		return this.tiempoMinutos;
+		return tiempoMinutos;
 	}
 
 	public void setTiempoMinutos(BigDecimal tiempoMinutos) {
@@ -105,59 +112,39 @@ public class ServiciosParqueadero implements Serializable {
 	}
 
 	public BigDecimal getValorFactura() {
-		return this.valorFactura;
+		return valorFactura;
 	}
 
 	public void setValorFactura(BigDecimal valorFactura) {
 		this.valorFactura = valorFactura;
 	}
 
-	public List<Pago> getPagos() {
-		return this.pagos;
-	}
-
-	public void setPagos(List<Pago> pagos) {
-		this.pagos = pagos;
-	}
-
-	public Pago addPago(Pago pago) {
-		getPagos().add(pago);
-		pago.setServiciosParqueadero(this);
-
-		return pago;
-	}
-
-	public Pago removePago(Pago pago) {
-		getPagos().remove(pago);
-		pago.setServiciosParqueadero(null);
-
-		return pago;
-	}
-
 	public List<Pqr> getPqrs() {
-		return this.pqrs;
+		return pqrs;
 	}
 
 	public void setPqrs(List<Pqr> pqrs) {
 		this.pqrs = pqrs;
 	}
 
-	public Pqr addPqr(Pqr pqr) {
-		getPqrs().add(pqr);
-		pqr.setServiciosParqueadero(this);
-
-		return pqr;
+	public List<HistorialEstadosServicio> getHistorialEstadosServicio() {
+		return historialEstadosServicio;
 	}
 
-	public Pqr removePqr(Pqr pqr) {
-		getPqrs().remove(pqr);
-		pqr.setServiciosParqueadero(null);
+	public void setHistorialEstadosServicio(List<HistorialEstadosServicio> historialEstadosServicio) {
+		this.historialEstadosServicio = historialEstadosServicio;
+	}
 
-		return pqr;
+	public List<RedencionPuntos> getRedencionPuntos() {
+		return redencionPuntos;
+	}
+
+	public void setRedencionPuntos(List<RedencionPuntos> redencionPuntos) {
+		this.redencionPuntos = redencionPuntos;
 	}
 
 	public Parqueadero getParqueadero() {
-		return this.parqueadero;
+		return parqueadero;
 	}
 
 	public void setParqueadero(Parqueadero parqueadero) {
@@ -165,26 +152,58 @@ public class ServiciosParqueadero implements Serializable {
 	}
 
 	public Usuario getUsuario() {
-		return this.usuario;
+		return usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
-	/**
-	 * @return the historialEstadosServicio
-	 */
-	public List<HistorialEstadosServicio> getHistorialEstadosServicio() {
-		return historialEstadosServicio;
+	public BigDecimal getTotalBruto() {
+		return totalBruto;
 	}
 
-	/**
-	 * @param historialEstadosServicio the historialEstadosServicio to set
-	 */
-	public void setHistorialEstadosServicio(
-			List<HistorialEstadosServicio> historialEstadosServicio) {
-		this.historialEstadosServicio = historialEstadosServicio;
+	public void setTotalBruto(BigDecimal totalBruto) {
+		this.totalBruto = totalBruto;
 	}
 
+	public BigDecimal getDescuento() {
+		return descuento;
+	}
+
+	public void setDescuento(BigDecimal descuento) {
+		this.descuento = descuento;
+	}
+
+	public BigDecimal getImpuestos() {
+		return impuestos;
+	}
+
+	public void setImpuestos(BigDecimal impuestos) {
+		this.impuestos = impuestos;
+	}
+
+	public BigDecimal getValorPP() {
+		return valorPP;
+	}
+
+	public void setValorPP(BigDecimal valorPP) {
+		this.valorPP = valorPP;
+	}
+
+	public BigDecimal getImpuestosPP() {
+		return impuestosPP;
+	}
+
+	public void setImpuestosPP(BigDecimal impuestosPP) {
+		this.impuestosPP = impuestosPP;
+	}
+
+	public BigDecimal getTotalPagar() {
+		return totalPagar;
+	}
+
+	public void setTotalPagar(BigDecimal totalPagar) {
+		this.totalPagar = totalPagar;
+	}
 }
