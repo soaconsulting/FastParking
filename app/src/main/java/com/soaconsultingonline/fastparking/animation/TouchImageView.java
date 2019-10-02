@@ -1,5 +1,6 @@
 package com.soaconsultingonline.fastparking.animation;
 
+
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;

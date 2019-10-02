@@ -18,6 +18,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig getSigningConfig()
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    variant.packageApplicationProvider.get().outputDirectory = new File(project.rootDir.absolutePath + "/release")
+                    def releaseFileName = "PayParking.apk"
+                    output.outputFileName = releaseFileName.toLowerCase()
+                }
+            }
         }
     }
 
@@ -37,6 +45,7 @@ android {
         exclude 'META-INF/dependencies.txt'
         exclude 'META-INF/LGPL2.1'
     }
+
 }
 
 repositories {
